@@ -7,6 +7,7 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { PublicModule } from './public/public.module';
 
 
 
@@ -20,7 +21,9 @@ import { UserModule } from './user/user.module';
     BrowserModule,
     AuthModule,
     AppRoutingModule,
-    UserModule
+    UserModule,
+    PublicModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
