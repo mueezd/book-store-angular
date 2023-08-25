@@ -10,6 +10,8 @@ export class BookDetailsComponent implements OnInit {
 
   public id: number = 0;
   public authorId: number = 0;
+
+  public name: string = '';
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -17,5 +19,10 @@ export class BookDetailsComponent implements OnInit {
       this.id = param['id'];
       this.authorId = param['authorId'];
     });
+
+    this.route.queryParams.subscribe(quearyParam => {
+      this.name = quearyParam['name'];
+      console.log(quearyParam);
+    })
   }
 } 

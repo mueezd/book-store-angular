@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { PublicModule } from './public/public.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -22,7 +23,8 @@ import { PublicModule } from './public/public.module';
     AuthModule,
     AppRoutingModule,
     UserModule,
-    PublicModule
+    PublicModule,
+    SharedModule
     
   ],
   providers: [],
