@@ -24,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // PublicModule,
     SharedModule,
     BrowserAnimationsModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

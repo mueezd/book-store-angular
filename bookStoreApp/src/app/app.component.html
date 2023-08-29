@@ -1,4 +1,4 @@
-<header class="d-flex justify-content-center py-3 shadow-sm">
+<!-- <header class="d-flex justify-content-center py-3 shadow-sm">
   <ul class="nav nav-pills">
     <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
@@ -6,15 +6,16 @@
     <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
     <li class="nav-item"><a href="#" class="nav-link">About</a></li>
   </ul>
-</header>
-
-
+</header> -->
+<app-toolbar></app-toolbar>
 <div>
   <a routerLink="/about-us">About Us</a>
   <a routerLink="/how-it-works">How It Works</a>
   <a routerLink="/auth/login" [queryParams]="{name:'deepro', email:email, id:'111'}">Login</a>
   <a routerLink="/public/all-books">All Books</a>
 </div>
+
+
 
 
 <router-outlet></router-outlet>
