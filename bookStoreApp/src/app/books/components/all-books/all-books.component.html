@@ -1,0 +1,16 @@
+<h2>{{pageTitle}}</h2>
+
+<a [routerLink]="'recent'">Recent Books</a>
+
+<button mat-raised-button color="primary" (click)="increase()">Counter ++</button>
+<br>
+<button mat-raised-button color="primary" (click)="decreas()">Counter -- </button>
+
+
+<p>Counter = {{counter2Service.counter}}</p>
+
+
+<app-book-card [allBooks]="books"></app-book-card>
+
+
+
