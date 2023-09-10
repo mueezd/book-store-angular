@@ -10,10 +10,10 @@ export class Counter2Service {
   constructor() { }
 
   public incCounter(): void {
-    this.counter += 2;
+    this.counter ++;
   }
 
   public decCounter(): void {
-    this.counter -= 2;
+    this.counter -- ;
   }
 }

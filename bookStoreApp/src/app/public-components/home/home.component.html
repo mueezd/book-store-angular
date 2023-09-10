@@ -1,15 +1,6 @@
 <p>home works!</p>
 
-
-<button mat-raised-button color="primary" (click)="increase()">Counter ++</button>
-<br>
-<button mat-raised-button color="primary" (click)="decreas()">Counter -- </button>
-
-
-<p>Counter = {{counterService.counter}}</p>
-
-<p>Value Is  = {{config.title}}</p>
-<p>Description Is  = {{config.description}}</p>
+<p>Data from child component = {{testService.myData}}</p>
 
 <h2>Our Authors</h2>
-<app-authors [data]="counterService.counter" [showAuthor]="counterService.counter >= 4"></app-authors>
+<app-authors></app-authors>
