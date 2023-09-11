@@ -1,5 +1,15 @@
-<p>authors works!</p>
+<div class="child-comp">
+    <p>authors Child works!</p>
 
-<p>Data coming form parents : {{data}}</p>  
+    <p>Input From parent = {{data}}</p>
+    <p>
+        Author data <br>
+        id: {{author.id}} <br>
+        name: {{author.name}}
+    </p>
 
-<button (click)="btnClick()">Pass Data to Parent</button>
+
+    <ng-content>
+
+    </ng-content>
+</div>
