@@ -1,5 +1,27 @@
 <h2>Add New Book</h2>
+<table>
+  <tr>
+    <td>pristine</td>
+    <td>{{bookTitle.pristine}}</td>
+  </tr>
+  <tr>
+    <td>dirty</td>
+    <td>{{bookTitle.dirty}}</td>
+  </tr>
+  <tr>
+    <td>touched</td>
+    <td>{{bookTitle.touched}}</td>
+  </tr>
+  <tr>
+    <td>status</td>
+    <td>{{bookTitle.status}}</td>
+  </tr>
 
+  <tr>
+    <td>Errors</td>
+    <td>{{bookTitle.errors | json}}</td>
+  </tr>
+</table>
 <form
   #myForm="ngForm"
   (ngSubmit)="saveBook()"
@@ -12,8 +34,12 @@
       placeholder="Title"
       name="title"
       [(ngModel)]="model.title"
+      required
+      min="10"
+      #bookTitle="ngModel"
     />
     <mat-icon matSuffix>title</mat-icon>
+    <mat-hint *ngIf="bookTitle.invalid && bookTitle.touched">Please enter book Title</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Authors</mat-label>
@@ -22,8 +48,12 @@
       placeholder="Author"
       name="author"
       [(ngModel)]="model.author"
+      required
+      min="10"
+      #author = "ngModel"
     />
     <mat-icon matSuffix>person</mat-icon>
+    <mat-hint *ngIf="author.invalid && author.touched">Please enter author Name</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>No. Of Page</mat-label>
@@ -32,8 +62,13 @@
       placeholder="Total Pages"
       name="pages"
       [(ngModel)]="model.totalPages"
+      min="10"
+      max="1000"
+      #nop="ngModel"
+      required
     />
     <mat-icon matSuffix>123</mat-icon>
+    <mat-hint [hidden]="nop.valid">Valid length is 10 to 1000</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Price</mat-label>
@@ -68,5 +103,5 @@
     >Is Published</mat-slide-toggle
   >
 
-  <button type="submit" mat-raised-button color="primary">Save</button>
+  <button type="submit" [disabled]="myForm.invalid" mat-raised-button color="primary">Save</button>
 </form>
