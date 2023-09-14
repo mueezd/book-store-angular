@@ -46,26 +46,6 @@ export class BookService {
         "currency":"USD",
         "value": 70
       }
-    },
-    {
-      "id": 4,
-      "title":"TypeScript fundamentals",
-      "totalPages": 399,
-      "author": "Ram Sing",
-      "price":{
-        "currency":"USD",
-        "value": 50
-      }
-    },
-    {
-      "id": 5,
-      "title":"Python fundamentals",
-      "totalPages": 200,
-      "author": "Ram Sing",
-      "price":{
-        "currency":"USD",
-        "value": 33
-      }
     }
   ];
   constructor() { }

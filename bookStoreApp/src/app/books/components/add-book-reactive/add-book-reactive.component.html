@@ -1,39 +1,77 @@
 <h2>Add New Book Reactive</h2>
 
+<button mat-raised-button color="primary" (click)="setDafaultValue()">Set Default Value</button>
+{{this.addBookForm.get('title')?.valid}}
+{{this.addBookForm.get('title')?.errors | json}}
+
 <form (ngSubmit)="saveBook()" class="add-book-form" [formGroup]="addBookForm">
   <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
-    <input matInput placeholder="Title" name="title" formControlName="title"/>
+    <input matInput placeholder="Title" name="title" formControlName="title" />
     <mat-icon matSuffix>title</mat-icon>
+    <mat-hint *ngIf="addBookForm.get('title')?.invalid && addBookForm.get('title')?.touched">
+      <span *ngIf="addBookForm.get('title')?.hasError('required')">Please enter book Title</span>
+      <span *ngIf="addBookForm.get('title')?.hasError('minlength')">min leangth is 10</span>
+    </mat-hint>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Authors</mat-label>
-    <input matInput placeholder="Author" name="author" formControlName="author"/>
+    <input
+      matInput
+      placeholder="Author"
+      name="author"
+      formControlName="author"
+    />
     <mat-icon matSuffix>person</mat-icon>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>No. Of Page</mat-label>
-    <input matInput placeholder="Total Pages" name="pages" formControlName="totalPages" />
+    <input
+      matInput
+      placeholder="Total Pages"
+      name="pages"
+      formControlName="totalPages"
+    />
     <mat-icon matSuffix>123</mat-icon>
   </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Price</mat-label>
-    <!-- <input matInput placeholder="Price" name="price" ngModel/> -->
-    <mat-select placeholder="Price" name="price" formControlName="price">
-      <mat-option *ngFor="let price of prices" [value]="price.value" >
-        {{ price.viewValue }}
-      </mat-option>
-    </mat-select>
-    <mat-icon matSuffix>attach_money</mat-icon>
-  </mat-form-field>
+  <!-- Price section Start -->
+  <div class="price-container" formGroupName="price">
+    <mat-form-field appearance="outline">
+      <mat-label>Currency</mat-label>
+      <mat-select placeholder="Currency" name="currency" formControlName="currency">
+        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+          {{ currency.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>paid</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <mat-select placeholder="Price" name="price" formControlName="value">
+        <mat-option *ngFor="let price of prices" [value]="price.value">
+          {{ price.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+  </div>
+  <!-- Price section end  -->
   <mat-form-field>
     <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" name="publishedOn" formControlName="publishedOn"/>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      name="publishedOn"
+      formControlName="publishedOn"
+    />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <mat-slide-toggle class="toggle" name="isPublished" formControlName="isPublished"
+  <mat-slide-toggle
+    class="toggle"
+    name="isPublished"
+    formControlName="isPublished"
     >Is Published</mat-slide-toggle
   >
 
@@ -47,4 +85,4 @@
   </button>
 </form>
 
-{{addBookForm.value | json}}
+{{ addBookForm.value | json }}
