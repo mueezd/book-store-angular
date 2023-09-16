@@ -19,6 +19,6 @@ public recentBooks: BookModel[];
 
 
   private getRecentBooks(): void{
-    this.recentBooks = this._bookService.recentBooks();
+    //this.recentBooks = this._bookService.recentBooks();
   }
 }

@@ -1,29 +1,70 @@
 <h2>Add New Book Reactive</h2>
 
-<button mat-raised-button color="primary" (click)="setDafaultValue()">Set Default Value</button>
-{{this.addBookForm.get('title')?.valid}}
-{{this.addBookForm.get('title')?.errors | json}}
-
 <form (ngSubmit)="saveBook()" class="add-book-form" [formGroup]="addBookForm">
+  
+
+  <mat-radio-group aria-label="Select an option" class="toggle" formControlName="formatType">
+    <mat-radio-button value="pdf">PDF</mat-radio-button>
+    <mat-radio-button value="doc">Document</mat-radio-button>
+  </mat-radio-group>
+  
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Doc Format</mat-label>
+    <input matInput placeholder="document format" name="docFormat" formControlName="docFormat" />
+    <mat-icon matSuffix>description</mat-icon>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Pdf Format</mat-label>
+    <input matInput placeholder="pdf format" name="pdfFormat" formControlName="pdfFormat" />
+    <mat-icon matSuffix>picture_as_pdf</mat-icon>
+  </mat-form-field>
+
+  
   <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Title" name="title" formControlName="title" />
     <mat-icon matSuffix>title</mat-icon>
-    <mat-hint *ngIf="addBookForm.get('title')?.invalid && addBookForm.get('title')?.touched">
-      <span *ngIf="addBookForm.get('title')?.hasError('required')">Please enter book Title</span>
-      <span *ngIf="addBookForm.get('title')?.hasError('minlength')">min leangth is 10</span>
+    <mat-hint>
+     {{titleErrorMessage}}
     </mat-hint>
   </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Authors</mat-label>
-    <input
-      matInput
-      placeholder="Author"
-      name="author"
-      formControlName="author"
-    />
-    <mat-icon matSuffix>person</mat-icon>
-  </mat-form-field>
+
+
+<div formArrayName="authors">
+  <div *ngFor="let auth of authors.controls; let i = index">
+    <mat-form-field appearance="outline" [formGroupName]="i">
+      <mat-label>Authors</mat-label>
+      <input
+        matInput
+        placeholder="Author Full Name"
+        name="fullName"
+        formControlName="fullName"
+      />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [formGroupName]="i">
+      <mat-label>Authors Address</mat-label>
+      <input
+        matInput
+        placeholder="Author's Address"
+        name="address"
+        formControlName="address"
+      />
+      <mat-icon matSuffix>home</mat-icon>
+    </mat-form-field>
+
+    
+    <button mat-button (click)="removeAuthor(i)">Remove</button>
+  </div>
+  <button (click)="addMoreAuthor()" mat-button>Add More</button>
+</div>
+
+
+
   <mat-form-field appearance="outline">
     <mat-label>No. Of Page</mat-label>
     <input
@@ -84,5 +125,3 @@
     Save
   </button>
 </form>
-
-{{ addBookForm.value | json }}

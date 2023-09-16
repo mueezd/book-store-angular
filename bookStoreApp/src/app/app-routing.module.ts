@@ -9,8 +9,8 @@ import { BooksComponent } from './books/books.component';
 import { HomeComponent } from './public-components/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'about-us', component: AboutUsComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full', title:'Welcome To Book Store App' },
+  { path: 'about-us', component: AboutUsComponent, title:'About Us' },
   { path: 'how-it-works', component: HowItWorksComponent },
   { path: 'auth', component: AuthComponent, loadChildren: () => import('./auth/auth.module').then(x => x.AuthModule) },
   { path: 'books', component: BooksComponent, loadChildren: () => import('./books/books.module').then(x => x.BooksModule) },

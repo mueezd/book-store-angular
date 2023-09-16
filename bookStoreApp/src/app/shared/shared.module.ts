@@ -7,6 +7,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { AuthorsAddressComponent } from './components/authors-address/authors-address.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BoolformatPipe } from './pipes/boolformat.pipe';
 
 
 
@@ -16,19 +18,23 @@ import { AuthorsAddressComponent } from './components/authors-address/authors-ad
     ToolbarComponent,
     FooterComponent,
     AuthorsComponent,
-    AuthorsAddressComponent
+    AuthorsAddressComponent,
+    BoolformatPipe
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     ToolbarComponent,
     FooterComponent,
     MaterialModule,
     AuthorsComponent,
-    AuthorsAddressComponent
+    AuthorsAddressComponent,
+    HttpClientModule,
+    BoolformatPipe
   ]
 })
 export class SharedModule { }
